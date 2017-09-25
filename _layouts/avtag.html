@@ -1,0 +1,71 @@
+---
+layout: nil
+---
+<div class="section">
+    <div class="divider"></div>
+    <div class="av-panel" id="{{ page.tag }}">
+        <div><h6 class="right">查看更多</h6>
+        {% assign ttitle = page.names | where: "lid", site.lang_id | default: page.names | first %}
+        {% if ttitle %}<h4 class="left-align">{{ ttitle.res | escape }}</h4>{% endif %}</div>
+        <div class="row">
+            {% for av in site.uploaders %}
+                {% unless page.tag == "__main" %}
+                    {% assign match_item = av.tag_ids | where: "id", page.tag | first | default: nil %}
+                    {% unless match_item %}{% continue %}{% endunless %}
+                {% endunless %}
+                {% assign title_name = av.names | where: "lid", site.lang_id | default: av.names | first %}
+                {% assign title_name = title_name.res | default: nil %}
+                {% assign dspr_name = av.dsprs | where: "lid", site.lang_id | default: av.dsprs | first %}
+                {% assign dspr_name = dspr_name.res | default: nil %}
+                {% assign prev_src = av.previews | where: "lid", site.lang_id | default: av.previews | first %}
+                {% if prev_src %}
+                    {% if prev_src.ext %}
+                        {% assign prev_src = nil %}
+                    {% else %}
+                        {% assign prev_src = prev_src.res | default: nil %}
+                    {% endif %}
+                {% endif %}
+            <div class="col s12 m6 l6 xl4 avcard">
+                <div class="card hoverable">
+                    <div class="card-image">
+                        <img alt="{{ title_name | escape }}" src="{{ prev_src }}"/>
+                        <div class="card-title"></div>
+                    </div>
+                    <div class="card-content">
+                        {% for tag_id in av.tag_ids %}
+                        <a class="chip waves-effect waves-light" href="{{ tag_id.id }}">
+                            {% assign tag_res = tag_id.names | where: "lid", site.lang_id | default: tag_id.names | first %}
+                            {% assign tag_res = tag_res.res | default: nil %}
+                            {{ tag_res | escape }}
+                        </a>
+                        {% endfor %}
+                        {% if title_name %}
+                        <span class="card-title">{{ title_name | truncate: 30 | escape }}</span>
+                        {% endif %}
+                        {% if dspr_name %}
+                        <p>{{ dspr_name | truncate: 42 | escape }}</p>
+                            {% for platform in av.platforms %}
+                                {% assign pp = site.plattag_styles | where: "pid", platform.pid | first | default: nil %}
+                                {% if pp %}
+                                    {% assign plattag_color = pp.bgcolor | default: nil %}
+                                    {% assign plattag_img = pp.img_m | default: nil %}
+                                {% endif %}
+                                <a class="chip platform_tag z-depth-1 {% if plattag_color %}{{plattag_color}}{% endif %}">
+                                    {% if plattag_img %}
+                                        <img src="{{ plattag_img }}"/>
+                                    {% endif %}                            
+                                </a>
+                            {% endfor %}
+                        {% endif %}
+                        <a class="btn-floating btn-large red halfway-fab avcard-goto" href="javascript:void(0);">
+                            <i class="material-icons">arrow_forward</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div><h6 class="right-align">查看更多</h6></div>
+    </div>
+    {% if page.av_count %}{% endif %}
+</div>

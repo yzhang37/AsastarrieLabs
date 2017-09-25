@@ -2,7 +2,21 @@
 layout: default
 ---
 <div class="container">
-
-    {{ content }}
-
+{% if page.names %}
+{% assign page_text = page.names %}
+{% assign page_text = page_text | where: "lid", site.lang_id | default: page_text | first %}
+{% if page_text %}<h1 class="page-title {% if page.unfinished %}grey-text{% endif %}">{{ page_text.res | escape }}</h1>{% endif %}
+{% endif %}
+<div class="page-content">
+{% unless page.unfinished %}{{ content }}{% else %}{{ site.failures | where:"type", "under_const" | first }}{% endunless %}
+</div>
+<div class="page-bottom">
+    <div class="divider"></div>
+    <h6 class="center-align grey-text">
+        <a class="btn-floating disabled"><i class="material-icons">vertical_align_bottom</i></a>
+        我是有底线的
+        <a class="btn-floating disabled"><i class="material-icons">vertical_align_bottom</i></a>
+    </h6>
+    <div class="divider"></div>
+</div>
 </div>

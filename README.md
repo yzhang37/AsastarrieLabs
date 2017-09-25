@@ -1,20 +1,11 @@
-# Jekyll Materialize Starter Template v0.1
+# Asastarrie Labs
 
-*A Site Starter Materialize Templates.
+This website is X230 NZ-666's personal website. Blablablablablabla.
 
-The theme is a fork of the [minima][1]
+## First version
 
-![minima theme preview](/screenshot.png)
+blablablablablablablabla.
 
+## Reference
+The jekyll theme derived from **Jekyll Materialize**. You can visit this repository at [here](https://github.com/macrod68/jekyll-materialize-starter-template).
 
-# License
-
-The theme is available as open source under the terms of the [MIT License][2].
-
-[Materialize][3] a  modern responsive front-end framework based on Material Design
-
-Copyright © 2017 Marco Damiani. Powered by <a href="http://jekyllrb.com">Jekyll</a>
-
-[1]: https://github.com/jekyll/minima
-[2]: https://opensource.org/licenses/MIT
-[3]: http://materializecss.com/

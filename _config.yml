@@ -1,11 +1,53 @@
-title: Starter Template
-author: Panoramedia
-email: panoramedia@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  A Site Starter Materialize Templates for Jekyll
+names:
+- lid: en-US
+  res: Asastarrie Labs
+author: X230 NZ-666
+email: Unicorn_X230@outlook.com
+descriptions:
+- lid: en-US
+  res: The personal website of X230 NZ666.
+- lid: zh-CN
+  res: 这里是 X230 大青椒的个人网站。
 
-twitter_username: macrod68
-github_username:  macrod68
+twitter_username: smartcyborg_230
+github_username:  yzhang37
+lang_id: zh-CN
+beian_info: "沪ICP备16034951号-1"
 
 sass:
     style: compressed
+
+collections:
+- uploaders
+- avtags
+- failures
+
+lres:
+  res_home_title:
+  - lid: en-US
+    res: "Home"
+  - lid: ja-JP
+    res: "ホーム"
+  - lid: zh-CN
+    res: "主页"
+  res_footer_connect:
+  - lid: en-US
+    res: "Connect"
+  - lid: zh-CN
+    res: "链接"
+
+limits:
+  av:
+    single_tag_max: 6
+    single_tag_showmore_bottom: 3
+    multitag_max: 12
+
+plattag_styles:
+  - pid: bilibili
+    bgcolor: "pink lighten-2"
+    img_c: 
+    img_m: "/assets/logos/bili_mono.png"
+  - pid: youtube
+    bgcolor: "red"
+    img_c: 
+    img_m: "/assets/logos/youtube_mono.png"

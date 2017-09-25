@@ -2,3 +2,20 @@
 <script src="{{ "js/jquery.min.js" | relative_url }}"></script>
 <script src="{{ "js/materialize.min.js" | relative_url }}"></script>
 <script src="{{ "js/init.js" | relative_url }}"></script>
+<script type="text/javascript" src="/js/rkil.js"></script>
+<script>
+    function imgURL(url) {
+        return ReferrerKiller.imageHtml(url);
+    }
+
+    jQuery(function() {
+        $("img").each(function() {
+            $url = $(this).attr("postsrc");
+            if (typeof($url) != 'undefined') {
+                $res = imgURL($url)
+                $(this).after($res);
+                $(this).remove();
+            }
+        })
+    })
+</script>

@@ -3,3 +3,7 @@
 Gemfile.lock
 _site
 *.gem
+
+# ignore Windows and macOS files
+Desktop.ini
+.DS_Store

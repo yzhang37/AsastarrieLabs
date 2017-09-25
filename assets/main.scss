@@ -3,3 +3,35 @@
 ---
 
 @import "main";
+
+$platform_tag_height: 24px;
+$platform_tag_img_height: 16px;
+
+.platform_tag
+{
+    height: $platform_tag_height;
+}
+
+.platform_tag img
+{
+    border-radius: 0%;
+    height: $platform_tag_img_height; 
+    width: auto; 
+    margin: auto;
+    margin-top: ($platform_tag_height - $platform_tag_img_height)/2;
+    margin-bottom: ($platform_tag_height - $platform_tag_img_height)/2;
+}
+
+.page-bottom
+{
+    margin-bottom: 20px;
+}
+.page-bottom h6
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.page-bottom a
+{
+    margin: 10px;
+}
