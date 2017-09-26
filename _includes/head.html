@@ -5,7 +5,7 @@
     <title>{% if page.names %}{% assign title_text = page.names %}{% else %}{% assign title_text = site.names %}{% endif %}{% assign title_text = title_text | where: "lid", site.lang_id | default: title_text | first %}{{ title_text.res | default: "Untitled" | escape }}</title>
     <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}" />
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/assets/material-icons.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen,projection" href="{{ "/assets/materialize.css" | relative_url }}" />
     <link rel="stylesheet" type="text/css" media="screen,projection" href="{{ "/assets/main.css" | relative_url }}">
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}" />
