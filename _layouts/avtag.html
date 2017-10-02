@@ -33,7 +33,7 @@ layout: nil
                     </div>
                     <div class="card-content">
                         {% for tag_id in av.tag_ids %}
-                        <a class="chip waves-effect waves-light" href="{{ tag_id.id }}">
+                        <a class="chip waves-effect waves-light" href="/av/{{ tag_id.id }}">
                             {% assign tag_res = tag_id.names | where: "lid", site.lang_id | default: tag_id.names | first %}
                             {% assign tag_res = tag_res.res | default: nil %}
                             {{ tag_res | escape }}
@@ -49,15 +49,18 @@ layout: nil
                                 {% if pp %}
                                     {% assign plattag_color = pp.bgcolor | default: nil %}
                                     {% assign plattag_img = pp.img_m | default: nil %}
+                                    {% assign plattag_name = pp.names %}{% assign plattag_name = plattag_name | where: "lid", site.lang_id | default: plattag_name | first %}
                                 {% endif %}
-                                <a class="chip platform_tag z-depth-1 {% if plattag_color %}{{plattag_color}}{% endif %}">
+                                <a class="chip platform_tag z-depth-1 {% if plattag_color %}{{plattag_color}}{% endif %}"
+                                    {% if plattag_name %}title="{{ plattag_name.res | escape }}"{% endif %}>
                                     {% if plattag_img %}
                                         <img src="{{ plattag_img }}"/>
                                     {% endif %}                            
                                 </a>
                             {% endfor %}
                         {% endif %}
-                        <a class="btn-floating btn-large red halfway-fab avcard-goto" href="javascript:void(0);">
+                        <a class="btn-floating btn-large red halfway-fab avcard-goto" href="javascript:void(0);" title="点击打开"
+                            onclick="window.open('{{ av.url }}', '_self')">
                             <i class="material-icons">arrow_forward</i>
                         </a>
                     </div>

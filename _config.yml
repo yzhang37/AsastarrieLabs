@@ -18,11 +18,29 @@ sass:
     style: compressed
 
 collections:
-- uploaders
-- avtags
-- failures
+  uploaders:
+    output: true
+    permalink: "/av/:year/:month/:day/:title"
+  avtags:
+    output: false
+  failures:
+    output: false
 
 lres:
+  longdate:
+  - lid: en-US
+    res: "%A, %B %e, %Y"
+  - lid: zh-CN
+    res: "%Y年%m月%e日"
+  - lid: ja-JP
+    res: "%Y年%m月%e日"
+  shortdate:
+  - lid: en-US
+    res: "%m/%e/%Y"
+  - lid: zh-CN
+    res: "%Y/%m/%e"
+  - lid: ja-JP
+    res: "%Y/%m/%d"
   res_home_title:
   - lid: en-US
     res: "Home"
@@ -35,6 +53,26 @@ lres:
     res: "Connect"
   - lid: zh-CN
     res: "链接"
+  res_avpage_sourcelang:
+  - lid: en-US
+    res: "Source/Language:"
+  - lid: zh-CN
+    res: "源/语言:"
+  res_avpage_categories:
+  - lid: en-US
+    res: "Categories:"
+  - lid: zh-CN
+    res: "分类:"
+  res_avpage_nosource:
+  - lid: en-US
+    res: "No sources available"
+  - lid: zh-CN
+    res: "没有视频源可用"
+  res_avpage_uploadat:
+  - lid: en-US
+    res: "uploaded at %1"
+  - lid: zh-CN
+    res: "上传于 %1"
 
 limits:
   av:
@@ -44,10 +82,20 @@ limits:
 
 plattag_styles:
   - pid: bilibili
+    names:
+    - lid: en-US
+      res: Bilibili
+    - lid: zh-CN
+      res: 哔哩哔哩
+    - lid: ja-JP
+      res: "ビリービリー"
     bgcolor: "pink lighten-2"
     img_c: 
     img_m: "/assets/logos/bili_mono.png"
   - pid: youtube
+    names:
+    - lid: en-US
+      res: Youtube
     bgcolor: "red"
     img_c: 
     img_m: "/assets/logos/youtube_mono.png"

@@ -1,8 +1,70 @@
 ---
-layout: default
+layout: page
 ---
-<div class="container">
+{% assign longdate = site.lres.longdate %}
+{% assign longdate = longdate | where: "lid", site.lang_id | default: longdate | first %}
+{% assign av_uploadat = site.lres.res_avpage_uploadat %}
+{% assign av_uploadat = av_uploadat | where: "lid", site.lang_id | default: av_uploadat | first %}
+{% assign av_sourcelang = site.lres.res_avpage_sourcelang %}
+{% assign av_sourcelang = av_sourcelang | where: "lid", site.lang_id | default: av_sourcelang | first %}
+{% assign av_ctgy = site.lres.res_avpage_categories %}
+{% assign av_ctgy = av_ctgy | where: "lid", site.lang_id | default: av_ctgy | first %}
+{% assign av_nosource = site.lres.res_avpage_nosource %}
+{% assign av_nosource = av_nosource | where: "lid", site.lang_id | default: av_nosource | first %}
 
-    {{ content }}
+{% if page.names %}
+    {% assign av_title = page.names %}
+    {% assign av_title = av_title | where: "lid", site.lang_id | default: av_title | first %}
+{% endif %}
+{% if page.dsprs %}
+    {% assign av_dspr = page.dsprs %}
+    {% assign av_dspr = av_dspr | where: "lid", site.lang_id | default: av_dspr | first %}
+{% endif %}
 
+{% assign prev_src = av.previews | where: "lid", site.lang_id | default: av.previews | first %}
+{% if prev_src %}
+    {% if prev_src.ext %}
+        {% comment %}TODO: How to handle with the external img sources?{% endcomment %}
+        {% assign prev_src = nil %}
+    {% else %}
+        {% assign prev_src = prev_src.res | default: nil %}
+    {% endif %}
+{% endif %}
+
+<div class="divider"></div>
+<div class="row">
+    <div class="col s12 m5 l4">
+        picture here
+    </div>
+    <div class="av-detail col s12 m7 l8">
+        <div class="line">
+            {% if av_title.res %}<span class="name">{{ av_title.res | escape }}</span>{% endif %}
+            {% assign datestr = page.date | date: longdate.res %}
+            {% if datestr %}<span class="date grey-text">{{ av_uploadat.res | replace: "%1", datestr | escape }}</span>{% endif %}
+        </div>
+        <div class="line">
+            {% if av_ctgy %}<span class="header">{{ av_ctgy.res | escape }}</span>{% endif %}
+            {% for tag_id in page.tag_ids %}<a class="chip waves-effect waves-light" href="/av/{{ tag_id.id }}">{% assign tag_res = tag_id.names | where: "lid", site.lang_id | default: tag_id.names | first %}{% assign tag_res = tag_res.res | default: nil %}{{ tag_res | escape }}</a>{% endfor %}
+        </div>
+        <div class="line">
+            {{ av_dspr.res | escape }}
+        </div>
+        <div class="line">
+            {% if av_sourcelang %}<span class="header">{{ av_sourcelang.res | escape }}</span>{% endif %}
+            {% assign av_source_cnt = 0 %}
+            {% for platform in page.platforms %}
+                {% assign pp = site.plattag_styles | where: "pid", platform.pid | first | default: nil %}
+                {% if pp %}
+                    {% assign plattag_color = pp.bgcolor | default: nil %}
+                    {% assign plattag_img = pp.img_m | default: nil %}
+                    {% assign plattag_name = pp.names %}{% assign plattag_name = plattag_name | where: "lid", site.lang_id | default: plattag_name | first %}
+                    <a class="btn waves-effect waves-light {% if plattag_color %}{{plattag_color}}{% endif %}">{% if plattag_name %}{{ plattag_name.res | escape }}{% endif %}</a>
+                    {% assign av_source_cnt = av_source_cnt | plus: 1 %}
+                {% endif %}
+            {% endfor %}
+            {% if av_source_cnt == 0 %}
+            <span class="grey-text">{{ av_nosource.res | escape }}</span>
+            {% endif %}
+        </div>
+    </div>
 </div>
