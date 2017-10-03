@@ -27,6 +27,13 @@ collections:
     output: false
 
 lres:
+  langname:
+  - lid: en-US
+    res: "English (United States)"
+  - lid: zh-CN
+    res: "简体中文"
+  - lid: ja-JP
+    res: "日本語"
   longdate:
   - lid: en-US
     res: "%A, %B %e, %Y"

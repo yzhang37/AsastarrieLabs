@@ -43,6 +43,7 @@ $platform_tag_img_height: 16px;
 
 .av-detail .line .header
 {
+    display: inline-block;
     margin-right: 10px;
 }
 
@@ -56,4 +57,31 @@ $platform_tag_img_height: 16px;
 {
     font-size: 0.8em;
     margin: 5px;
+    display: inline-block;
 }
+
+.av-pictbox
+{
+    position: relative;
+}
+
+.av-pictbox img
+{
+    vertical-align: middle;
+    text-align: center;
+    width: 100%;
+}
+
+$img-boxshadow-style: inset 0px 0px 10px 20px #fff;
+.av-pictbox::after
+{
+    position: absolute;
+    top: 0px; 
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    content: "";
+    -webkit-box-shadow: $img-boxshadow-style;
+    box-shadow: $img-boxshadow-style;
+}
+

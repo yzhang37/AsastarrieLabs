@@ -52,7 +52,8 @@ layout: nil
                                     {% assign plattag_name = pp.names %}{% assign plattag_name = plattag_name | where: "lid", site.lang_id | default: plattag_name | first %}
                                 {% endif %}
                                 <a class="chip platform_tag z-depth-1 {% if plattag_color %}{{plattag_color}}{% endif %}"
-                                    {% if plattag_name %}title="{{ plattag_name.res | escape }}"{% endif %}>
+                                    {% if plattag_name %}title="{{ plattag_name.res | escape }}"{% endif %}
+                                    onclick="window.open('{{ av.url }}?platform={{platform.pid}}', '_self')">
                                     {% if plattag_img %}
                                         <img src="{{ plattag_img }}"/>
                                     {% endif %}                            
