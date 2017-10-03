@@ -53,6 +53,7 @@ layout: nil
                                 {% endif %}
                                 <a class="chip platform_tag z-depth-1 {% if plattag_color %}{{plattag_color}}{% endif %}"
                                     {% if plattag_name %}title="{{ plattag_name.res | escape }}"{% endif %}
+                                    href="javascript:void(0);"
                                     onclick="window.open('{{ av.url }}?platform={{platform.pid}}', '_self')">
                                     {% if plattag_img %}
                                         <img src="{{ plattag_img }}"/>

@@ -85,3 +85,8 @@ $img-boxshadow-style: inset 0px 0px 10px 20px #fff;
     box-shadow: $img-boxshadow-style;
 }
 
+.shadow
+{
+    transition: box-shadow 1s;
+}
+
