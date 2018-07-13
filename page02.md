@@ -6,7 +6,7 @@ names:
 - lid: en-US
   res: "Coding"
 - lid: ja-JP
-  res: "コードイング"
+  res: "コーディング"
 permalink: /cd/
 unfinished: true
 ---

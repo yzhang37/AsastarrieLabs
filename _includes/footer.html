@@ -1,49 +1,61 @@
-  <footer class="page-footer orange">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Asastarrie Labs</h5>
-          {% assign footer_text = site.descriptions %}
-          {% assign footer_text = footer_text | where: "lid", site.lang_id | default: footer_text | first %}
-          {% if footer_text %}<p class="grey-text text-lighten-4">{{ footer_text.res | escape }}</p>{% endif %}
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Under</a></li>
-            <li><a class="white-text" href="#!">Construction</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">
-            {% assign footer_text = site.lres.res_footer_connect %}
-            {% assign footer_text = footer_text | where: "lid", site.lang_id | default: footer_text | first %}
-            {% if footer_text %}{{ footer_text.res | escape }}{% endif %}
-          </h5>
-          <ul>
-            {% if site.github_username %}
-              <li><iframe src="https://ghbtns.com/github-btn.html?user={{ site.github_username | url_encode }}&type=follow&count=true"
-                frameborder="0" scrolling="0" width="170px" height="20px"></iframe></li>
-            {% endif %}
-            {% if site.twitter_username %}
-              <li><a class="twitter-follow-button"
-                href="https://twitter.com/{{ site.twitter_username | strip | url_encode }}">
-                Twitter: @{{ site.twitter_username | escape }}</a></li>
-            {% endif %}
-          </ul>
-        </div>
+<footer class="page-footer orange">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Asastarrie Labs</h5>
+        {%- assign footer_text = site.descriptions -%}
+        {%- assign footer_text = footer_text | where: "lid", site.lang_id | default: footer_text | first -%}
+        {%- if footer_text -%}
+        <p class="grey-text text-lighten-4">
+          {{- footer_text.res | escape -}}
+        </p>
+        {%- endif -%}
+      </div>
+      <div class="col l3 s12">
+        <h5 class="white-text">Settings</h5>
+        <ul>
+          <li><a class="white-text" href="#!">Under</a></li>
+          <li><a class="white-text" href="#!">Construction</a></li>
+        </ul>
+      </div>
+      <div class="col l3 s12">
+        <h5 class="white-text">
+          {%- assign footer_text = site.lres.res_footer_connect -%}
+          {%- assign footer_text = footer_text | where: "lid", site.lang_id | default: footer_text | first -%}
+          {%- if footer_text -%}
+            {{- footer_text.res | escape -}}
+          {%- endif -%}
+        </h5>
+        <ul>
+          {%- if site.github_username %}
+          <li><iframe src="https://ghbtns.com/github-btn.html?user={{ site.github_username | url_encode }}&type=follow&count=true"
+            frameborder="0" scrolling="0" width="170px" height="20px"></iframe></li>
+          {%- endif -%}
+          {%- if site.twitter_username %}
+          <li><a class="twitter-follow-button"
+            href="https://twitter.com/{{ site.twitter_username | strip | url_encode }}">
+            Twitter: @{{ site.twitter_username | escape }}</a></li>
+          {%- endif %}
+        </ul>
       </div>
     </div>
-    <div class="footer-copyright">
-        <div class="container">
-            <div>
-                Made by <a target="_blank" class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-                <span>{% if site.beian_info %}<a class="white-text" href="javascript:void(0);" onclick="window.open('http://www.miitbeian.gov.cn/', '_blank');" target="_blank">{{ site.beian_info }}</a>{% endif %}</span>
-                <span style="text-align: right; float: right">
-                Copyright © 2017 <span class="orange-text text-lighten-3">Asastarrie Labs</span>. Powered by <a target="_blank" href="http://jekyllrb.com/" class="orange-text text-lighten-3">Jekyll</a>
-                </span>
-            </div>
-        </div>
-    </div>
+  </div>
+  <div class="footer-copyright">
+      <div class="container">
+          <div>
+              Made by <a target="_blank" class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+              <span>
+                {%- if site.beian_info -%}
+                <a class="white-text" href="javascript:void(0);" title="点击即可访问工信部备案页面。" onclick="window.open('http://www.miitbeian.gov.cn/', '_blank');" target="_blank">
+                  {{- site.beian_info -}}
+                </a>
+                {%- endif -%}
+              </span>
+              <span style="text-align: right; float: right">
+              Copyright © 2017 <span class="orange-text text-lighten-3">Asastarrie Labs</span>. Powered by <a target="_blank" href="http://jekyllrb.com/" class="orange-text text-lighten-3">Jekyll</a>
+              </span>
+          </div>
+      </div>
+  </div>
 </footer>
 <!-- Twitter Button -->

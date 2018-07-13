@@ -12,9 +12,9 @@ type: under_const
   <h5 class="center grey-text">可以看看别的内容哦</h5>
   <div class="center-align">
     <a class=" pink-text text-lighten-3" href="/">
-      {% assign lr = site.lres.res_home_title %}
-      {% assign lr = lr | where:"lid", site.lang_id | default: lr | first %}
-      {{ lr.res }}
+      {%- assign lr = site.lres.res_home_title -%}
+      {%- assign lr = lr | where:"lid", site.lang_id | default: lr | first -%}
+      {{- lr.res -}}
     <div class="btn-floating pink lighten-3"><i class="material-icons">arrow_forward</i></div></a>
   </div>
 </div>

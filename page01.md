@@ -6,7 +6,7 @@ names:
 - lid: en-US
   res: "Uploader"
 - lid: ja-JP
-  res: "アップロード者"
+  res: "アップローダー"
 permalink: /av/
 ---
 {{ site.avtags | where: "tag", "prog" }}

@@ -1,43 +1,60 @@
-<nav class="{% if page.unfinished %}grey{% else %}light-blue{% endif %}
- lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" class="brand-logo" href="{{ "/" | relative_url }}">
-    <img src="/assets/logos/nz666.png" height="45" style="vertical-align: middle;"></img>
+<nav class="
+{%- if page.unfinished -%}
+grey
+{%- else -%}
+{%- comment -%}TODO：未来页面需要允许自定义页面颜色，不能总是选择淡蓝色{%- endcomment -%}
+light-blue
+{%- endif -%}
+{% raw %} lighten-1{% endraw %}" role="navigation">
+  <div class="nav-wrapper container">
+    <a id="logo-container" class="brand-logo" href="{{ " / " | relative_url }}">
+      <img src="/assets/logos/nz666.png" height="45" style="vertical-align: middle;"></img>
     </a>
-    {% assign default_paths = site.pages | map: "path" %}
-    {% assign page_paths = site.header_pages | default: default_paths %}
+    {%- assign default_paths = site.pages | map: "path" -%}
+    {%- assign page_paths = site.header_pages | default: default_paths %}
+    <ul class="right hide-on-med-and-down">
+      <li>{{--}}
+        <a href="{{ "/" | relative_url }}">
+          {%- assign lr = site.lres.res_home_title -%}
+          {%- assign lr = lr | where:"lid", site.lang_id | default: lr | first -%}
+          {{- lr.res -}}
+        </a>{{--}}
+      </li>
+      {%- if page_paths -%}
+        {%- for path in page_paths -%}
+          {%- assign my_page = site.pages | where: "path", path | first -%}
+          {%- assign page_title = my_page.names | where: "lid", site.lang_id | default: my_page.names | first -%}
+          {%- if page_title -%}
+      <li>{{--}}
+        <a href="{{ my_page.url | relative_url }}">{{- page_title.res | escape -}}</a>{{--}}
+      </li>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif %}
+    </ul>
 
-          <ul class="right hide-on-med-and-down">
-            <li><a href="{{ "/" | relative_url }}">
-            {% assign lr = site.lres.res_home_title %}
-            {% assign lr = lr | where:"lid", site.lang_id | default: lr | first %}
-            {{ lr.res }}
-            </a></li>
-            {% if page_paths %}
-                {% for path in page_paths %}
-                    {% assign my_page = site.pages | where: "path", path | first %}
-                    {% assign page_title = my_page.names | where: "lid", site.lang_id | default: my_page.names | first %}
-                    {% if page_title %}
-                    <li><a href="{{ my_page.url | relative_url }}">{{ page_title.res | escape }}</a></li>
-                    {% endif %}
-                {% endfor %}
-            {% endif %}              
-          </ul>
-
-          <ul id="nav-mobile" class="side-nav">
-            <li><a href="{{ "/" | relative_url }}">{% assign lr = site.lres.res_home_title %}
-                {% assign lr = lr | where:"lid", site.lang_id | default: lr | first %}
-                {{ lr.res }}</a></li>
-            {% if page_paths %}
-                {% for path in page_paths %}
-                    {% assign my_page = site.pages | where: "path", path | first %}
-                    {% assign page_title = my_page.names | where: "lid", site.lang_id | default: my_page.names | first %}
-                    {% if page_title %}
-                        <li><a href="{{ my_page.url | relative_url }}">{{ page_title.res | escape }}</a></li>
-                    {% endif %}
-                {% endfor %}
-            {% endif %} 
-          </ul>        
-
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
+    <ul id="nav-mobile" class="side-nav">
+      <li>{{--}}
+        <a href="{{ "/" | relative_url }}">
+        {%- assign lr = site.lres.res_home_title -%}
+        {%- assign lr = lr | where:"lid", site.lang_id | default: lr | first -%}
+        {{- lr.res -}}
+        </a>{{--}}
+      </li>
+      {%- if page_paths -%}
+        {%- for path in page_paths -%}
+          {%- assign my_page = site.pages | where: "path", path | first -%}
+          {%- assign page_title = my_page.names | where: "lid", site.lang_id | default: my_page.names | first -%}
+          {%- if page_title -%}
+      <li>{{--}}
+        <a href="{{ my_page.url | relative_url }}">{{- page_title.res | escape -}}</a>{{--}}
+      </li>
+          {% endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </ul>
+    <a href="#" data-activates="nav-mobile" class="button-collapse">
+      <i class="material-icons">menu</i>
+    </a>
+  </div>
 </nav>

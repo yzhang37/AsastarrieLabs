@@ -2,7 +2,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 
-    <title>{% if page.names %}{% assign title_text = page.names %}{% else %}{% assign title_text = site.names %}{% endif %}{% assign title_text = title_text | where: "lid", site.lang_id | default: title_text | first %}{{ title_text.res | default: "Untitled" | escape }}</title>
+    <title>
+    {%- if page.names -%}
+        {%- assign title_text = page.names -%}
+    {%- else -%}
+        {%- assign title_text = site.names -%}
+    {%- endif -%}
+    {%- assign title_text = title_text | where: "lid", site.lang_id | default: title_text | first -%}
+    {{- title_text.res | default: "Untitled" | escape -}}
+    </title>
     <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}" />
 
     <link href="/assets/material-icons.css" rel="stylesheet">
@@ -11,7 +19,7 @@
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}" />
   
-    {% if jekyll.environment == 'production' and site.google_analytics %}
-    {% include google-analytics.html %}
-    {% endif %}
+    {%- if jekyll.environment == 'production' and site.google_analytics -%}
+    {%- include google-analytics.html -%}
+    {%- endif %}
 </head>
