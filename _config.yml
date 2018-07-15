@@ -55,6 +55,13 @@ lres:
     res: "ホーム"
   - lid: zh-CN
     res: "主页"
+  res_page_bottom_end:
+  - lid: en-US
+    res: "All good thing come to an end."
+  - lid: zh-CN
+    res: "我是有底线的。"
+  - lid: ja-JP
+    res: "え、ここまでか。"
   res_footer_connect:
   - lid: en-US
     res: "Connect"

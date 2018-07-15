@@ -7,14 +7,23 @@ layout: default
 
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
+        <p>
+          {%- for category in page.categories -%}
+          <a class="chip waves-effect waves-light" href="javascript: void(0);">
+            {{ category }}
+          </a>
+          {%- endfor -%}
+        </p>
         <p class="post-meta">
           <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-            {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-            {{ page.date | date: date_format }}
+            {%- assign date_format_lid = page.lid | default: site.lang_id -%}
+            {%- assign date_format = site.lres.longdate | where: "lid", date_format_lid | map: "res" | first -%}
+            {{- page.date | date: date_format -}}
           </time>
-          {% if page.author %}
+          {%- if page.author -%}
             • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
-          {% endif %}</p>
+          {%- endif -%}
+        </p>
       </header>
 
       <div class="post-content" itemprop="articleBody">
