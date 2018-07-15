@@ -1,5 +1,4 @@
 ---
 layout: home
 ---
-
-A Site Starter Materialize Templates for Jekyll.
+X230大青椒

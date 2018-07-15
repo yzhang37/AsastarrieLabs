@@ -72,11 +72,15 @@ lres:
     res: "Source/Language:"
   - lid: zh-CN
     res: "源/语言:"
+  - lid: ja-JP
+    res: "ソース/言語:"
   res_avpage_categories:
   - lid: en-US
     res: "Categories:"
   - lid: zh-CN
     res: "分类:"
+  - lid: ja-JP
+    res: "カテゴリ："
   res_avpage_nosource:
   - lid: en-US
     res: "No sources available"
