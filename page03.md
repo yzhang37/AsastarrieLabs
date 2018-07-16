@@ -1,12 +1,7 @@
 ---
 layout: page
-names:
-- lid: zh-CN
-  res: "生活"
-- lid: en-US
-  res: "Life"
-- lid: ja-JP
-  res: "ライフ"
+lid: en-US
+lname: Life
 permalink: /blog/
 unfinished: true
 ---

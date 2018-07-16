@@ -1,3 +1,4 @@
+# 网站信息
 names:
 - lid: en-US
   res: Asastarrie Labs
@@ -14,9 +15,11 @@ github_username:  yzhang37
 lang_id: zh-CN
 beian_info: "沪ICP备16034951号-1"
 
+# 网站参数配置
 sass:
     style: compressed
 
+# 定义网站的自定义类型
 collections:
   uploaders:
     output: true
@@ -26,6 +29,15 @@ collections:
   failures:
     output: false
 
+# 网站资源
+res:
+  colors:
+    ui_color1: "light-blue lighten-1"
+    ui_color2: "orange"
+    ui_color_gray1: "grey lighten-1"
+    ui_color_gray2: "grey"
+
+# 语言资源
 lres:
   langname:
   - lid: en-US

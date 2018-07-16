@@ -1,13 +1,8 @@
 ---
 layout: page
-names:
-- lid: zh-CN
-  res: "关于"
-- lid: en-US
-  res: "About"
-- lid: ja-JP
-  res: "情报"
 permalink: /about/
+lid: en-US
+lname: About
 unfinished: true
 ---
 {%- assign str="red lighten-3" -%}

@@ -2,14 +2,13 @@
 layout: default
 ---
 <div class="container">
-{%- if page.names -%}
-  {%- assign page_text = page.names -%}
-  {%- assign page_text = page_text | where: "lid", site.lang_id | default: page_text | first -%}
-  {%- if page_text -%}
-  <h1 class="page-title {% if page.unfinished %}grey-text{% endif %}">
-    {{- page_text.res | escape -}}
+{%- if page.lname -%}
+  <h1 class="page-title
+  {%- if page.unfinished %}
+    grey-text
+  {% endif -%}">
+    {{- page.lname | escape -}}
   </h1>
-  {%- endif -%}
 {%- endif -%}
 <div class="page-content">
 {%- unless page.unfinished -%}

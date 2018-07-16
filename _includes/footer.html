@@ -1,4 +1,14 @@
-<footer class="page-footer orange">
+{%- if page.unfinished -%}
+  {% assign this_color2 = site.res.colors.ui_color_gray2 %}
+{%- else -%}
+  {%- if page.ui_color2 -%}
+    {%- assign this_color2 = page.ui_color2 -%}}
+  {%- else -%}
+    {%- assign this_color2 = site.res.colors.ui_color2 -%}
+  {%- endif -%}  
+{%- endif -%}
+{%- assign this_text_color2 = this_color2 | split: " " | first -%}
+<footer class="page-footer {{ this_color2 }}">
   <div class="container">
     <div class="row">
       <div class="col l6 s12">
@@ -43,7 +53,7 @@
   <div class="footer-copyright">
       <div class="container">
           <div>
-              Made by <a target="_blank" class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+              Made by <a target="_blank" class="{{- this_text_color2 -}}-text text-lighten-3" href="http://materializecss.com">Materialize</a>
               <span>
                 {%- if site.beian_info -%}
                 <a class="white-text" href="javascript:void(0);" title="点击即可访问工信部备案页面。" onclick="window.open('http://www.miitbeian.gov.cn/', '_blank');" target="_blank">
@@ -52,7 +62,7 @@
                 {%- endif -%}
               </span>
               <span style="text-align: right; float: right">
-              Copyright © 2017 <span class="orange-text text-lighten-3">Asastarrie Labs</span>. Powered by <a target="_blank" href="http://jekyllrb.com/" class="orange-text text-lighten-3">Jekyll</a>
+              Copyright © 2017 <span class="{{- this_text_color2 -}}-text text-lighten-3">Asastarrie Labs</span>. Powered by <a target="_blank" href="http://jekyllrb.com/" class="{{- this_text_color2 -}}-text text-lighten-3">Jekyll</a>
               </span>
           </div>
       </div>

@@ -4,17 +4,21 @@ layout: default
 
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-      <br><br>
-      <h1 class="header center orange-text">{% assign header_text = site.names %}{% assign header_text = header_text | where: "lid", site.lang_id | default: header_text | first %}{{ header_text.res | default: "Untitled" | escape }}</h1>
+      <h1 class="header center orange-text">
+        {%- assign header_text = site.names -%}
+        {%- assign header_text = header_text | where: "lid", page.lid | default: header_text | first -%}
+        {{- header_text.res | default: "Untitled" | escape -}}
+      </h1>
+      <!--
       <div class="row center">
-        <h5 class="header col s12 light">{{ content }}</h5>
-      </div>
+        <h5 class="header col s12 light">
+          {{- content -}}
+        </h5>
+      </div>-->
     </div>
   </div>
       
-    <div style="background: #ddd">
     <div class="container last-post">
-    
     <section>
         <h5>Latest Post</h5>
         <ul class="collection">
@@ -38,6 +42,5 @@ layout: default
         </ul>  
     </section>
     </div>
-</div>
 
   </div>

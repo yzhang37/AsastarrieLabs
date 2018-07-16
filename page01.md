@@ -1,13 +1,8 @@
 ---
 layout: page
-names:
-- lid: zh-CN
-  res: "UP主"
-- lid: en-US
-  res: "Uploader"
-- lid: ja-JP
-  res: "アップローダー"
 permalink: /av/
+lid: en-US
+lname: Uploader
 ---
 {{ site.avtags | where: "tag", "prog" }}
 {{ site.avtags | where: "tag", "__main" }}
