@@ -13,6 +13,7 @@ Welcome to X230 NZ666's personal website repository!
 - [ ] Life page
   - [ ] Design...
 - [ ] Multilingual Support
+  - [ ] 网站修改为英文界面
   - [ ] Detect current language
   - [ ] List of articles of the current language
   - [ ] Language selector
