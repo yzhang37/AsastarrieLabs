@@ -13,50 +13,67 @@ layout: default
   <div class="section no-pad-bot {{ this_color1 }}" id="index-banner">
     <div class="container">
       <br />
-      <h3 class="header center white-text">
-        <!-- {%- assign header_text = site.names -%}
-        {%- assign header_text = header_text | where: "lid", page.lid | default: header_text | first -%}
-        {{- header_text.res | default: "Untitled" | escape -}} -->
-        “Back to my own...”
-      </h3>
+      <div class="center white-text">
+        {{ content }}
+      </div>
       <br />
       <div class="row center white-text">
         <div class="container">
-          <h5 class="header col s12">Welcome to visit X230NZ666's<br />personal website with in total</h5>
-          
+          <h5 class="header col s12 m8 offset-m2 ">{{ page.home_res_01 | default: "page.home_res_01" | escape }}</h5>
+        </div>
+        <br />
+        {%- assign home_info_01 = page.home_res_02 | default: "page.home_res_02" -%}
+        {%- assign home_info_02 = page.home_res_03 | default: "page.home_res_03" -%}
+        {%- assign home_info_03 = page.home_res_04 | default: "page.home_res_04" -%}
+        {%- assign av_count = site.uploaders | size -%}
+        {%- assign coding_count = 0 -%}
+        {%- assign life_count = 0 -%}
+        {%- for post in site.posts -%}
+          {%- for category in post.categories -%}
+            {%- if category == page.home_res_05 -%}
+              {%- assign coding_count = coding_count | plus: 1 -%}
+            {%- endif -%}
+            {%- if category == page.home_res_06 -%}
+              {%- assign life_count = life_count | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endfor -%}
+        {%- assign home_info_01 = home_info_01 | replace: "%0", av_count -%}
+        {%- assign home_info_02 = home_info_02 | replace: "%0", coding_count -%}
+        {%- assign home_info_03 = home_info_03 | replace: "%0", life_count -%}
+        <div class="container">  
           <div class="hide-on-small-only">
             <div class="col m4">
               <div class="icon-block">
                 <h3><i class="material-icons">live_tv</i></h3>
-                <h5>0 Animation</h5>
+                <h5>{{ home_info_01 }}</h5>
               </div>
             </div>
             <div class="col m4">
               <div class="icon-block">
                 <h3><i class="material-icons">code</i></h3>
-                <h5>10 Coding blogs</h5>
+                <h5>{{ home_info_02 }}</h5>
               </div>
             </div>
             <div class="col m4">
               <div class="icon-block">
                 <h3><i class="material-icons">clear_all</i></h3>
-                <h5>10 Life blogs</h5>
+                <h5>{{ home_info_03 }}</h5>
               </div>
             </div>
           </div>
-
           <div class="col s12 hide-on-med-and-up">
             <div class="valign-wrapper">
               <div class="col s4"><i class="material-icons right" style="font-size: 28px;">live_tv</i></div>
-              <div class="col s8"><h5 class="left">0 Animation</h5></div>
+              <div class="col s8"><h5 class="left">{{ home_info_01 }}</h5></div>
             </div>
             <div class="valign-wrapper">
               <div class="col s4"><i class="material-icons right" style="font-size: 28px;">code</i></div>
-              <div class="col s8"><h5 class="left">10 Coding blogs</h5></div>
+              <div class="col s8"><h5 class="left">{{ home_info_02 }}</h5></div>
             </div>
             <div class="valign-wrapper">
               <div class="col s4"><i class="material-icons right" style="font-size: 28px;">clear_all</i></div>
-              <div class="col s8"><h5 class="left">10 Life blogs</h5></div>
+              <div class="col s8"><h5 class="left">{{ home_info_03 }}</h5></div>
             </div>
           </div>
         </div>
@@ -70,6 +87,9 @@ layout: default
         <h5>Latest Post</h5>
         <ul class="collection">
         {% for post in site.posts -%}
+          {%- if post.lid != page.lid -%}
+            {%- continue -%}
+          {%- endif -%}
         <li class="collection-item avatar">
           {%- assign date_format = site.minima.date_format | default: "%m/%d" %}
           <div class="date-post">{{ post.date | date: date_format }}</div>
