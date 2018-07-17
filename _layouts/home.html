@@ -1,14 +1,25 @@
 ---
 layout: default
 ---
-
-  <div class="section no-pad-bot" id="index-banner">
+{%- if page.unfinished -%}
+  {% assign this_color1 = site.res.colors.ui_color_gray1 %}
+{%- else -%}
+  {%- if page.ui_color1 -%}
+    {%- assign this_color1 = page.ui_color1 -%}
+  {%- else -%}
+    {%- assign this_color1 = site.res.colors.ui_color1 -%}
+  {%- endif -%}  
+{%- endif -%}
+  <div class="section no-pad-bot {{ this_color1 }}" id="index-banner">
     <div class="container">
-      <h1 class="header center orange-text">
-        {%- assign header_text = site.names -%}
+      <br />
+      <h3 class="header center white-text">
+        <!-- {%- assign header_text = site.names -%}
         {%- assign header_text = header_text | where: "lid", page.lid | default: header_text | first -%}
-        {{- header_text.res | default: "Untitled" | escape -}}
-      </h1>
+        {{- header_text.res | default: "Untitled" | escape -}} -->
+        Back to my own...
+      </h3>
+      <br />
       <!--
       <div class="row center">
         <h5 class="header col s12 light">
@@ -26,8 +37,8 @@ layout: default
         <li class="collection-item avatar">
           {%- assign date_format = site.minima.date_format | default: "%m/%d" %}
           <div class="date-post">{{ post.date | date: date_format }}</div>
-          <span class="title"><a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></span>
-          <p>
+          <span class="title"><a class="post-link green-text text-accent-4" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></span>
+          <p class="grey-text text-darken-2" style="margin: 5px;">
             {%- assign post_lines = post.content | strip_html | escape_once | newline_to_br | strip_newlines | replace: "<br /><br />", "<br />" | split: "<br />" -%}
             {%- assign post_content_output = post_lines[0] | append: "<br />" | append: post_lines[1] -%}
             {%- unless post.ea -%}
