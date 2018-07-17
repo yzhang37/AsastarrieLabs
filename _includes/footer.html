@@ -2,7 +2,7 @@
   {% assign this_color2 = site.res.colors.ui_color_gray2 %}
 {%- else -%}
   {%- if page.ui_color2 -%}
-    {%- assign this_color2 = page.ui_color2 -%}}
+    {%- assign this_color2 = page.ui_color2 -%}
   {%- else -%}
     {%- assign this_color2 = site.res.colors.ui_color2 -%}
   {%- endif -%}  
@@ -12,9 +12,13 @@
   <div class="container">
     <div class="row">
       <div class="col l6 s12">
-        <h5 class="white-text">Asastarrie Labs</h5>
+        {%- assign footer_text = site.names -%}
+        {%- assign footer_text = footer_text | where: "lid", page.lid | default: footer_text | first -%}
+        <h5 class="white-text">{%- if footer_text -%}
+            {{ footer_text.res }}
+          {%- endif -%}</h5>
         {%- assign footer_text = site.descriptions -%}
-        {%- assign footer_text = footer_text | where: "lid", site.lang_id | default: footer_text | first -%}
+        {%- assign footer_text = footer_text | where: "lid", page.lid | default: footer_text | first -%}
         {%- if footer_text -%}
         <p class="grey-text text-lighten-4">
           {{- footer_text.res | escape -}}
