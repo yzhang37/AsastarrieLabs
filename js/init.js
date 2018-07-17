@@ -48,6 +48,9 @@
       ShowBottom('medium');
       $('.dropdown-button').dropdown('close');
     });
+    $('.sidenav-close').click(function() {
+      $('.button-collapse').sideNav('hide');
+    });
 
     // if there exists a platform link, show it.
 
