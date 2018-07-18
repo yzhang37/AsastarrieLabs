@@ -1,8 +1,12 @@
+# file for Ruby and Liquid
 .bundle
 .sass-cache
 Gemfile.lock
 _site
 *.gem
+
+# ignore posts and uploader files
+_posts/
 
 # ignore Windows and macOS files
 Desktop.ini

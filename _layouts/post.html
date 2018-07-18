@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+{%- assign this_lid = page.lid | default: site.lang_id -%}
 <div class="container">
     <div class="section">
     <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
@@ -16,8 +17,7 @@ layout: default
         </p>
         <p class="post-meta">
           <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-            {%- assign date_format_lid = page.lid | default: site.lang_id -%}
-            {%- assign date_format = site.lres.longdate | where: "lid", date_format_lid | map: "res" | first -%}
+            {%- assign date_format = site.lres.longdate | where: "lid", this_lid | map: "res" | first -%}
             {{- page.date | date: date_format -}}
           </time>
           {%- if page.author -%}

@@ -1,11 +1,12 @@
 ---
 layout: nil
 ---
+{%- assign this_lid = page.lid | default: site.lang_id -%}
 <div class="section">
     <div class="divider"></div>
     <div class="av-panel" id="{{ page.tag }}">
         <div><h6 class="right">查看更多</h6>
-        {% assign ttitle = page.names | where: "lid", site.lang_id | default: page.names | first %}
+        {% assign ttitle = page.names | where: "lid", this_lid | default: page.names | first %}
         {% if ttitle %}<h4 class="left-align">{{ ttitle.res | escape }}</h4>{% endif %}</div>
         <div class="row">
             {% for av in site.uploaders %}
@@ -13,11 +14,11 @@ layout: nil
                     {% assign match_item = av.tag_ids | where: "id", page.tag | first | default: nil %}
                     {% unless match_item %}{% continue %}{% endunless %}
                 {% endunless %}
-                {% assign title_name = av.names | where: "lid", site.lang_id | default: av.names | first %}
+                {% assign title_name = av.names | where: "lid", this_lid | default: av.names | first %}
                 {% assign title_name = title_name.res | default: nil %}
-                {% assign dspr_name = av.dsprs | where: "lid", site.lang_id | default: av.dsprs | first %}
+                {% assign dspr_name = av.dsprs | where: "lid", this_lid | default: av.dsprs | first %}
                 {% assign dspr_name = dspr_name.res | default: nil %}
-                {% assign prev_src = av.previews | where: "lid", site.lang_id | default: av.previews | first %}
+                {% assign prev_src = av.previews | where: "lid", this_lid | default: av.previews | first %}
                 {% if prev_src %}
                     {% if prev_src.ext %}
                         {% assign prev_src = nil %}
@@ -34,7 +35,7 @@ layout: nil
                     <div class="card-content">
                         {% for tag_id in av.tag_ids %}
                         <a class="chip waves-effect waves-light" href="/av/{{ tag_id.id }}">
-                            {% assign tag_res = tag_id.names | where: "lid", site.lang_id | default: tag_id.names | first %}
+                            {% assign tag_res = tag_id.names | where: "lid", this_lid | default: tag_id.names | first %}
                             {% assign tag_res = tag_res.res | default: nil %}
                             {{ tag_res | escape }}
                         </a>
@@ -49,7 +50,7 @@ layout: nil
                                 {% if pp %}
                                     {% assign plattag_color = pp.bgcolor | default: nil %}
                                     {% assign plattag_img = pp.img_m | default: nil %}
-                                    {% assign plattag_name = pp.names %}{% assign plattag_name = plattag_name | where: "lid", site.lang_id | default: plattag_name | first %}
+                                    {% assign plattag_name = pp.names %}{% assign plattag_name = plattag_name | where: "lid", this_lid | default: plattag_name | first %}
                                 {% endif %}
                                 <a class="chip platform_tag z-depth-1 {% if plattag_color %}{{plattag_color}}{% endif %}"
                                     {% if plattag_name %}title="{{ plattag_name.res | escape }}"{% endif %}

@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+{%- assign this_lid = page.lid | default: site.lang_id -%}
 {%- if page.unfinished -%}
   {% assign this_color1 = site.res.colors.ui_color_gray1 %}
 {%- else -%}
@@ -84,10 +85,12 @@ layout: default
       
     <div class="container last-post">
     <section>
-        <h5>Latest Post</h5>
+        {%- assign text_latest_post = site.lres.res_post_latest -%}
+        {%- assign text_latest_post = text_latest_post | where: "lid", this_lid | default: text_latest_post | first -%}
+        <h5>{{- text_latest_post.res | default: "site.lres.res_post_latest" | escape -}}</h5>
         <ul class="collection">
         {% for post in site.posts -%}
-          {%- if post.lid != page.lid -%}
+          {%- if post.lid != this_lid -%}
             {%- continue -%}
           {%- endif -%}
         <li class="collection-item avatar">
@@ -105,7 +108,7 @@ layout: default
           </p>
           <a href="{{ post.url | relative_url }}" class="secondary-content"><i class="material-icons">navigate_next</i></a>
         </li>
-        {% endfor %}
+        {%- endfor %}
         </ul>  
     </section>
     </div>

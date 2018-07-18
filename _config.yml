@@ -1,19 +1,31 @@
 # 网站信息
-names:
-- lid: en-US
-  res: Asastarrie Labs
-author: X230 NZ-666
-email: Unicorn_X230@outlook.com
-descriptions:
-- lid: en-US
-  res: The personal website of X230 NZ666.
-- lid: zh-CN
-  res: 这里是 X230 大青椒的个人网站。
+config:
+  info:
+    names:
+    - lid: en-US
+      res: Asastarrie Labs
+    author: X230 NZ-666
+    email: Unicorn_X230@outlook.com
+    descriptions:
+    - lid: en-US
+      res: The personal website of X230 NZ666.
+    - lid: zh-CN
+      res: 这里是 X230 大青椒的个人网站。
+    twitter_username: smartcyborg_230
+    github_username:  yzhang37
+    beian_info: "沪ICP备16034951号-1"
+    
+  main_page_url:
+  - lid: en-US
+    res: "/"
+  - lid: zh-CN
+    res: "/cn"
+  - lid: ja-JP
+    res: "/jp"
 
-twitter_username: smartcyborg_230
-github_username:  yzhang37
+
 lang_id: zh-CN
-beian_info: "沪ICP备16034951号-1"
+
 
 # 网站参数配置
 sass:
@@ -67,6 +79,13 @@ lres:
     res: "ホーム"
   - lid: zh-CN
     res: "主页"
+  res_post_latest:
+  - lid: en-US
+    res: "Latest post"
+  - lid: zh-CN
+    res: "最近更新"
+  - lid: ja-JP
+    res: "最新の投稿"
   res_page_bottom_end:
   - lid: en-US
     res: "All good thing come to an end."
@@ -74,11 +93,41 @@ lres:
     res: "我是有底线的。"
   - lid: ja-JP
     res: "え、ここまでか。"
+  res_footer_settings:
+  - lid: en-US
+    res: "Preferences"
+  - lid: zh-CN
+    res: "偏好设置"
+  - lid: ja-JP
+    res: "基本設定"
   res_footer_connect:
   - lid: en-US
     res: "Connect"
   - lid: zh-CN
     res: "链接"
+  - lid: ja-JP
+    res: "リンクス"
+  res_footer_maded_by:
+  - lid: en-US
+    res: "Made by %0."
+  - lid: zh-CN
+    res: "使用 %0 设计制作。"
+  - lid: ja-JP
+    res: "%0 経由で作られた。"
+  res_footer_copyright:
+  - lid: en-US
+    res: "Copyright © 2017-%0 "
+  - lid: zh-CN
+    res: "版权所有 © 2017-%0 "
+  - lid: ja-JP
+    res: "著作権 © 2017-%0 "
+  res_footer_powered_by:
+  - lid: en-US
+    res: "Powered by %0"
+  - lid: zh-CN
+    res: "由 %0 提供。"
+  - lid: ja-JP
+    res: "%0 によって提供する。"
   res_avpage_sourcelang:
   - lid: en-US
     res: "Source/Language:"
