@@ -1,5 +1,6 @@
 # 网站信息
-config:
+# new jekyll have some problems with the use of `site.config`, so change to `site.configs`
+configs:
   info:
     names:
     - lid: en-US

@@ -13,12 +13,12 @@
   <div class="container">
     <div class="row">
       <div class="col l6 s12">
-        {%- assign footer_text = site.config.info.names -%}
+        {%- assign footer_text = site.configs.info.names -%}
         {%- assign footer_text = footer_text | where: "lid", this_lid | default: footer_text | first -%}
         <h5 class="white-text">{%- if footer_text -%}
             {{ footer_text.res }}
           {%- endif -%}</h5>
-        {%- assign footer_text = site.config.info.descriptions -%}
+        {%- assign footer_text = site.configs.info.descriptions -%}
         {%- assign footer_text = footer_text | where: "lid", this_lid | default: footer_text | first -%}
         {%- if footer_text -%}
         <p class="grey-text text-lighten-4">
@@ -45,14 +45,14 @@
           {{- footer_text.res | default: "site.lres.res_footer_connect" | escape -}}
         </h5>
         <ul>
-          {%- if site.config.info.github_username %}
-          <li><iframe src="https://ghbtns.com/github-btn.html?user={{ site.config.info.github_username | url_encode }}&type=follow&count=true"
+          {%- if site.configs.info.github_username %}
+          <li><iframe src="https://ghbtns.com/github-btn.html?user={{ site.configs.info.github_username | url_encode }}&type=follow&count=true"
             frameborder="0" scrolling="0" width="170px" height="20px"></iframe></li>
           {%- endif -%}
-          {%- if site.config.info.twitter_username %}
+          {%- if site.configs.info.twitter_username %}
           <li><a class="twitter-follow-button"
-            href="https://twitter.com/{{ site.config.info.twitter_username | strip | url_encode }}">
-            Twitter: @{{ site.config.info.twitter_username | escape }}</a></li>
+            href="https://twitter.com/{{ site.configs.info.twitter_username | strip | url_encode }}">
+            Twitter: @{{ site.configs.info.twitter_username | escape }}</a></li>
           {%- endif %}
         </ul>
       </div>
@@ -66,9 +66,9 @@
               {%- assign footer_text = footer_text | where: "lid", this_lid | default: footer_text | first -%}
               {{ footer_text.res | default: "site.lres.res_footer_maded_by" | escape | replace: "%0", maded_by_author }}
               <span>
-                {%- if site.config.info.beian_info -%}
+                {%- if site.configs.info.beian_info -%}
                 <a class="white-text" href="javascript:void(0);" title="点击即可访问工信部备案页面。" onclick="window.open('http://www.miitbeian.gov.cn/', '_blank');" target="_blank">
-                  {{- site.config.info.beian_info | escape -}}
+                  {{- site.configs.info.beian_info | escape -}}
                 </a>
                 {%- endif -%}
               </span>

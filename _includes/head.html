@@ -7,7 +7,7 @@
     {%- if page.names -%}
         {%- assign title_text = page.names -%}
     {%- else -%}
-        {%- assign title_text = site.config.info.names -%}
+        {%- assign title_text = site.configs.info.names -%}
     {%- endif -%}
     {%- assign title_text = title_text | where: "lid", this_lid | default: title_text | first -%}
     {{- title_text.res | default: "Untitled" | escape -}}

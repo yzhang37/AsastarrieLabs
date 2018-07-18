@@ -10,7 +10,7 @@
   {%- endif -%}
 {%- endif -%}" role="navigation">
   <div class="nav-wrapper container">
-    {%- assign home_page_url = site.config.main_page_url -%}
+    {%- assign home_page_url = site.configs.main_page_url -%}
     {%- assign home_page_url = home_page_url | where: "lid", this_lid | default: home_page_url | first -%}
 
     <a id="logo-container" class="brand-logo" href="{{ home_page_url.res | default: "/" | relative_url }}">
