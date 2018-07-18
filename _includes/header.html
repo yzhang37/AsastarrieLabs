@@ -1,3 +1,4 @@
+{%- assign this_lid = page.lid | default: site.lang_id -%}
 <nav class="
 {%- if page.unfinished -%}
   {{ site.res.colors.ui_color_gray1 }}
@@ -9,23 +10,26 @@
   {%- endif -%}
 {%- endif -%}" role="navigation">
   <div class="nav-wrapper container">
-    <a id="logo-container" class="brand-logo" href="{{ "/" | relative_url }}">
+    {%- assign home_page_url = site.config.main_page_url -%}
+    {%- assign home_page_url = home_page_url | where: "lid", this_lid | default: home_page_url | first -%}
+
+    <a id="logo-container" class="brand-logo" href="{{ home_page_url.res | default: "/" | relative_url }}">
       <img src="/assets/logos/nz666.png" height="45" style="vertical-align: middle;"></img>
     </a>
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths %}
     <ul class="right hide-on-med-and-down">
       <li>{{--}}
-        <a href="{{ "/" | relative_url }}">
+        <a href="{{ home_page_url.res | default: "/" | relative_url }}">
           {%- assign lr = site.lres.res_home_title -%}
-          {%- assign lr = lr | where:"lid", page.lid | default: lr | first -%}
+          {%- assign lr = lr | where:"lid", this_lid | default: lr | first -%}
           {{- lr.res -}}
         </a>{{--}}
       </li>
       {%- if page_paths -%}
         {%- for path in page_paths -%}
           {%- assign my_page = site.pages | where: "path", path | first -%}
-          {%- if my_page.lid != page.lid -%}
+          {%- if my_page.lid != this_lid -%}
             {%- continue -%}
           {%- endif -%}
           {%- assign page_title = my_page.lname -%}
@@ -41,16 +45,16 @@
     <ul id="nav-mobile" class="side-nav">
       <li><a class="sidenav-close"><i class="material-icons">menu</i></a></li>
       <li>{{--}}
-        <a href="{{ "/" | relative_url }}">
+        <a href="{{ home_page_url.res | default: "/" | relative_url }}">
         {%- assign lr = site.lres.res_home_title -%}
-        {%- assign lr = lr | where:"lid", page.lid | default: lr | first -%}
+        {%- assign lr = lr | where:"lid", this_lid | default: lr | first -%}
         {{- lr.res -}}
         </a>{{--}}
       </li>
       {%- if page_paths -%}
         {%- for path in page_paths -%}
           {%- assign my_page = site.pages | where: "path", path | first -%}
-          {%- if my_page.lid != page.lid -%}
+          {%- if my_page.lid != this_lid -%}
             {%- continue -%}
           {%- endif -%}
           {%- assign page_title = my_page.lname -%}

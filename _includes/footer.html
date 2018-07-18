@@ -1,3 +1,4 @@
+{%- assign this_lid = page.lid | default: site.lang_id -%}
 {%- if page.unfinished -%}
   {% assign this_color2 = site.res.colors.ui_color_gray2 %}
 {%- else -%}
@@ -12,13 +13,13 @@
   <div class="container">
     <div class="row">
       <div class="col l6 s12">
-        {%- assign footer_text = site.names -%}
-        {%- assign footer_text = footer_text | where: "lid", page.lid | default: footer_text | first -%}
+        {%- assign footer_text = site.config.info.names -%}
+        {%- assign footer_text = footer_text | where: "lid", this_lid | default: footer_text | first -%}
         <h5 class="white-text">{%- if footer_text -%}
             {{ footer_text.res }}
           {%- endif -%}</h5>
-        {%- assign footer_text = site.descriptions -%}
-        {%- assign footer_text = footer_text | where: "lid", page.lid | default: footer_text | first -%}
+        {%- assign footer_text = site.config.info.descriptions -%}
+        {%- assign footer_text = footer_text | where: "lid", this_lid | default: footer_text | first -%}
         {%- if footer_text -%}
         <p class="grey-text text-lighten-4">
           {{- footer_text.res | escape -}}
@@ -26,29 +27,32 @@
         {%- endif -%}
       </div>
       <div class="col l3 s12">
-        <h5 class="white-text">Settings</h5>
+        <h5 class="white-text">
+          {%- assign footer_text = site.lres.res_footer_settings -%}
+          {%- assign footer_text = footer_text | where: "lid", this_lid | default: footer_text | first -%}
+          {{- footer_text.res | default: "site.lres.res_footer_settings" | escape -}}
+        </h5>
         <ul>
-          <li><a class="white-text" href="#!">Under</a></li>
-          <li><a class="white-text" href="#!">Construction</a></li>
+          <li><a class="white-text" href="#!">Under construction</a></li>
+          <li><a class="white-text" href="#!">尚未完成</a></li>
+          <li><a class="white-text" href="#!">まだ建設中です</a></li>
         </ul>
       </div>
       <div class="col l3 s12">
         <h5 class="white-text">
           {%- assign footer_text = site.lres.res_footer_connect -%}
-          {%- assign footer_text = footer_text | where: "lid", site.lang_id | default: footer_text | first -%}
-          {%- if footer_text -%}
-            {{- footer_text.res | escape -}}
-          {%- endif -%}
+          {%- assign footer_text = footer_text | where: "lid", this_lid | default: footer_text | first -%}
+          {{- footer_text.res | default: "site.lres.res_footer_connect" | escape -}}
         </h5>
         <ul>
-          {%- if site.github_username %}
-          <li><iframe src="https://ghbtns.com/github-btn.html?user={{ site.github_username | url_encode }}&type=follow&count=true"
+          {%- if site.config.info.github_username %}
+          <li><iframe src="https://ghbtns.com/github-btn.html?user={{ site.config.info.github_username | url_encode }}&type=follow&count=true"
             frameborder="0" scrolling="0" width="170px" height="20px"></iframe></li>
           {%- endif -%}
-          {%- if site.twitter_username %}
+          {%- if site.config.info.twitter_username %}
           <li><a class="twitter-follow-button"
-            href="https://twitter.com/{{ site.twitter_username | strip | url_encode }}">
-            Twitter: @{{ site.twitter_username | escape }}</a></li>
+            href="https://twitter.com/{{ site.config.info.twitter_username | strip | url_encode }}">
+            Twitter: @{{ site.config.info.twitter_username | escape }}</a></li>
           {%- endif %}
         </ul>
       </div>
@@ -57,16 +61,26 @@
   <div class="footer-copyright">
       <div class="container">
           <div>
-              Made by <a target="_blank" class="{{- this_text_color2 -}}-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+              {%- assign maded_by_author = '<a target="_blank" class="%0-text text-lighten-3" href="http://materializecss.com">Materialize</a>' | replace: "%0", this_text_color2 -%}
+              {%- assign footer_text = site.lres.res_footer_maded_by -%}
+              {%- assign footer_text = footer_text | where: "lid", this_lid | default: footer_text | first -%}
+              {{ footer_text.res | default: "site.lres.res_footer_maded_by" | escape | replace: "%0", maded_by_author }}
               <span>
-                {%- if site.beian_info -%}
+                {%- if site.config.info.beian_info -%}
                 <a class="white-text" href="javascript:void(0);" title="点击即可访问工信部备案页面。" onclick="window.open('http://www.miitbeian.gov.cn/', '_blank');" target="_blank">
-                  {{- site.beian_info -}}
+                  {{- site.config.info.beian_info | escape -}}
                 </a>
                 {%- endif -%}
               </span>
               <span style="text-align: right; float: right">
-              Copyright © 2017 <span class="{{- this_text_color2 -}}-text text-lighten-3">Asastarrie Labs</span>. Powered by <a target="_blank" href="http://jekyllrb.com/" class="{{- this_text_color2 -}}-text text-lighten-3">Jekyll</a>
+              {%- assign footer_text = site.lres.res_footer_copyright -%}
+              {%- assign footer_text = footer_text | where: "lid", this_lid | default: footer_text | first -%}
+              {%- assign footer_build_year = site.time | date: "%Y" -%}
+              {{ footer_text.res | default: "site.lres.res_footer_copyright" | escape | replace: "%0", footer_build_year }}
+              {% assign powered_by_author = '<a target="_blank" href="http://jekyllrb.com/" class="%0-text text-lighten-3">Jekyll</a>' | replace: "%0", this_text_color2 -%}
+              {%- assign footer_text = site.lres.res_footer_powered_by -%}
+              {%- assign footer_text = footer_text | where: "lid", this_lid | default: footer_text | first -%}
+              <span class="{{- this_text_color2 -}}-text text-lighten-3">Asastarrie Labs</span>. {{ footer_text.res | default: "site.lres.res_footer_powered_by" | escape | replace: "%0", powered_by_author }}
               </span>
           </div>
       </div>
