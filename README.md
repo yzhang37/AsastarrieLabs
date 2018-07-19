@@ -23,9 +23,9 @@ Welcome to X230 NZ666's personal website repository!
   - [ ] Translation of menus, date format and others. (some problems with Japanese date)
   - [ ] Improvments for search engines.
 - [ ] About page
-- [ ] Add https for security enhancement.
-  - [ ] enable HTTPS in apache
-  - [ ] request certificate. 
+- [x] Add https for security enhancement.
+  - [x] enable HTTPS in apache
+  - [x] request certificate. 
 
 ## Reference
 The jekyll theme derived from **Jekyll Materialize**. You can visit this repository at [here](https://github.com/macrod68/jekyll-materialize-starter-template).
