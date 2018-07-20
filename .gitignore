@@ -1,6 +1,7 @@
 # file for Ruby and Liquid
 .bundle
 .sass-cache
+.jekyll-metadata
 Gemfile.lock
 _site
 *.gem
